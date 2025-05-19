@@ -1,59 +1,83 @@
-# UserManager
+# User Manager (UserCRM)
+> **Важно:**  
+> В приложении используется бесплатный фейковый API [JSONPlaceholder](https://jsonplaceholder.typicode.com/users),  
+> который **не** сохраняет изменения. Все `POST`, `PUT` и `DELETE` запросы возвращают эмулированный «успех»,  
+> но данные на сервере не меняются. Кроме того, отсутствие тела ответа или особенности CORS могут приводить  
+> к появлению ошибок в HTTP-клиенте — в таких случаях отображается уведомление об ошибке операции.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
+[Live demo](https://gaminv.github.io/user_manager/)
 
-## Development server
+---
 
-To start a local development server, run:
+## О проекте
+
+Angular-приложение для управления списком пользователей:
+
+- **Список пользователей** — таблица с пагинацией, фильтрацией по имени/email-домену и поиском.
+- **Детали пользователя** — просмотр информации о выбранном пользователе.
+- **Форма создания/редактирования** — реактивная форма с валидацией (обязательные поля, корректный email).
+- **Удаление пользователя** — через модальное подтверждение.
+- **Ng-Zorro Ant Design** для UI-компонентов и стилей.
+---
+
+## Функциональность по ТЗ
+
+1. **Компоненты**  
+   - `UserListComponent` — список с пагинацией, фильтрами и поиском.  
+   - `UserDetailComponent` — подробная информация по `id`.  
+   - `UserFormComponent` — создание/редактирование пользователя.
+
+2. **Сервис**  
+   - `UserService` — методы CRUD:  
+     - `getUsers()`  
+     - `getUserById(id: number)`  
+     - `createUser(user: any)`  
+     - `updateUser(id: number, user: any)`  
+     - `deleteUser(id: number)`
+
+3. **Маршрутизация**  
+   - `/` — список пользователей  
+   - `/create` — форма создания  
+   - `/edit/:id` — форма редактирования  
+   - `/user/:id` — детали пользователя
+
+4. **Формы и валидация**  
+   - Reactive Forms, обязательные поля `name`, `email`.  
+   - Проверка формата email.
+
+5. **Дополнительно**  
+   - Ng-Zorro для таблиц, кнопок, модалей и сообщений.  
+   - Unit-тесты для компонентов и сервиса (Karma + Jasmine).  
+   - Деплой на GitHub Pages через `angular-cli-ghpages`.
+
+---
+
+## Быстрый старт
+
+### 1. Клонировать репозиторий
 
 ```bash
-ng serve
+git clone https://github.com/gaminv/user_manager.git
+cd user_manager
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 2. Установить зависимости
 
 ```bash
-ng generate component component-name
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 3. Локальный запуск
+```bash
+npm start
+```
+Открыть в браузере: [http://localhost:4200](http://localhost:4200)
+
+### 4. Запуск тестов
 
 ```bash
-ng generate --help
+npm test
 ```
 
-## Building
+---
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
