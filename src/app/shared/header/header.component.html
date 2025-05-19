@@ -1,0 +1,21 @@
+<nz-layout>
+    <nz-header class="app-header">
+        <div class="header-container">
+            <a class="logo-area" routerLink="/" title="Перейти на главную">
+                <svg class="logo-img" width="32" height="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" fill="#1890ff" />
+                    <text x="12" y="16" font-size="10" text-anchor="middle" fill="white" font-family="Arial"
+                        font-weight="bold">
+                        U
+                    </text>
+                </svg>
+                <span class="site-title">UserCRM</span>
+            </a>
+
+            <button nz-button nzType="primary" nzShape="round" class="add-user-btn" routerLink="/create">
+                <i nz-icon nzType="user-add"></i>
+                Новый пользователь
+            </button>
+        </div>
+    </nz-header>
+</nz-layout>

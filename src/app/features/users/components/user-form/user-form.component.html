@@ -1,0 +1,115 @@
+<ng-template #titleTpl>
+    <span nz-icon [nzType]="isEdit ? 'edit' : 'user-add'" nzTheme="outline" class="card-icon"></span>
+    {{ isEdit ? 'Редактирование пользователя' : 'Создание пользователя' }}
+</ng-template>
+
+<nz-card nzBordered="false" [nzTitle]="titleTpl" class="user-form-card">
+    <form nz-form [formGroup]="form" (ngSubmit)="submitForm()" class="user-form">
+        <!-- Основная информация -->
+        <nz-divider></nz-divider>
+        <nz-row [nzGutter]="16">
+            <nz-col nzXs="24" nzMd="12">
+                <nz-form-item>
+                    <nz-form-label nzFor="name" nzRequired>Имя</nz-form-label>
+                    <nz-form-control [nzErrorTip]="'Введите имя'">
+                        <input nz-input formControlName="name" id="name" />
+                    </nz-form-control>
+                </nz-form-item>
+            </nz-col>
+            <nz-col nzXs="24" nzMd="12">
+                <nz-form-item>
+                    <nz-form-label nzFor="username">Username</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input formControlName="username" id="username" />
+                    </nz-form-control>
+                </nz-form-item>
+            </nz-col>
+        </nz-row>
+
+        <!-- Контакты -->
+        <nz-divider></nz-divider>
+        <nz-row [nzGutter]="16">
+            <nz-col nzXs="24" nzMd="12">
+                <nz-form-item>
+                    <nz-form-label nzFor="email" nzRequired>Email</nz-form-label>
+                    <nz-form-control [nzErrorTip]="'Введите корректный email'">
+                        <input nz-input formControlName="email" id="email" />
+                    </nz-form-control>
+                </nz-form-item>
+            </nz-col>
+            <nz-col nzXs="24" nzMd="12">
+                <nz-form-item>
+                    <nz-form-label nzFor="phone">Телефон</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input formControlName="phone" id="phone" />
+                    </nz-form-control>
+                </nz-form-item>
+            </nz-col>
+        </nz-row>
+
+        <!-- Сайт -->
+        <nz-divider></nz-divider>
+        <nz-form-item>
+            <nz-form-label nzFor="website">Сайт</nz-form-label>
+            <nz-form-control>
+                <input nz-input formControlName="website" id="website" />
+            </nz-form-control>
+        </nz-form-item>
+
+        <!-- Адрес -->
+        <nz-divider></nz-divider>
+        <nz-row [nzGutter]="16">
+            <nz-col nzXs="24" nzMd="12">
+                <nz-form-item>
+                    <nz-form-label nzFor="addressStreet">Улица</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input formControlName="addressStreet" id="addressStreet" />
+                    </nz-form-control>
+                </nz-form-item>
+            </nz-col>
+            <nz-col nzXs="24" nzMd="12">
+                <nz-form-item>
+                    <nz-form-label nzFor="addressSuite">Квартира / офис</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input formControlName="addressSuite" id="addressSuite" />
+                    </nz-form-control>
+                </nz-form-item>
+            </nz-col>
+        </nz-row>
+        <nz-row [nzGutter]="16">
+            <nz-col nzXs="24" nzMd="12">
+                <nz-form-item>
+                    <nz-form-label nzFor="addressCity">Город</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input formControlName="addressCity" id="addressCity" />
+                    </nz-form-control>
+                </nz-form-item>
+            </nz-col>
+            <nz-col nzXs="24" nzMd="12">
+                <nz-form-item>
+                    <nz-form-label nzFor="addressZipcode">Почтовый индекс</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input formControlName="addressZipcode" id="addressZipcode" />
+                    </nz-form-control>
+                </nz-form-item>
+            </nz-col>
+        </nz-row>
+
+        <!-- Компания -->
+        <nz-divider></nz-divider>
+        <nz-form-item>
+            <nz-form-label nzFor="companyName">Название компании</nz-form-label>
+            <nz-form-control>
+                <input nz-input formControlName="companyName" id="companyName" />
+            </nz-form-control>
+        </nz-form-item>
+
+        <!-- Кнопки -->
+        <div class="form-actions">
+            <button nz-button nzType="primary" [disabled]="form.invalid">
+                {{ isEdit ? 'Обновить' : 'Создать' }}
+            </button>
+            <button nz-button nzType="default" type="button" (click)="goBack()">Отмена</button>
+        </div>
+    </form>
+</nz-card>

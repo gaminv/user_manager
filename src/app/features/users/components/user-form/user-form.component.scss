@@ -1,0 +1,54 @@
+.user-form-card {
+    max-width: 800px;
+    margin: 8px auto;
+    padding: 8px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+    nz-divider {
+        display: none;
+    }
+
+    nz-row {
+        margin-bottom: 8px;
+    }
+
+    nz-form-item {
+        margin-bottom: 8px;
+    }
+
+    nz-form-label {
+        display: block;
+        margin-bottom: 4px;
+        font-weight: 500;
+    }
+}
+
+.card-icon {
+    font-size: 18px;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.form-icon {
+    font-size: 16px;
+    margin-right: 6px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+
+    button {
+        min-width: 120px;
+        height: 36px;
+        font-size: 14px;
+    }
+}
+
+.nz-form-control input {
+    width: 100%;
+}

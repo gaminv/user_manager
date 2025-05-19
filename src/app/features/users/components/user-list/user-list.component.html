@@ -1,0 +1,65 @@
+<div class="filters-container">
+    <nz-input-group [nzSuffix]="searchTerm ? clearSearchIcon : searchIcon" class="filter-input">
+        <input type="text" nz-input placeholder="Поиск по имени или email" [(ngModel)]="searchTerm"
+            (ngModelChange)="onSearch()" />
+        <ng-template #searchIcon>
+            <i nz-icon nzType="search"></i>
+        </ng-template>
+        <ng-template #clearSearchIcon>
+            <i nz-icon nzType="close-circle" nzTheme="fill" class="clear-icon" (click)="resetFilters()"></i>
+        </ng-template>
+    </nz-input-group>
+
+    <nz-select [(ngModel)]="selectedEmailDomain" (ngModelChange)="applyFilters()" nzAllowClear
+        placeholder="Фильтрация по email-домену" class="filter-select">
+        <nz-option [nzValue]="''" nzLabel="Все"></nz-option>
+        <nz-option *ngFor="let domain of emailDomains" [nzValue]="domain" [nzLabel]="domain"></nz-option>
+    </nz-select>
+</div>
+
+<nz-table [nzData]="displayedUsers" [nzLoading]="isLoading" [nzBordered]="false" [nzShowPagination]="false"
+    nzSize="middle" class="user-table">
+    <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Email</th>
+            <th>Телефон</th>
+            <th>Город</th>
+            <th class="actions-column">Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of displayedUsers">
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.address?.city }}</td>
+            <td>
+                <button nz-button nzType="link" [routerLink]="['/edit', user.id]">
+                    <i nz-icon nzType="edit"></i>
+                    Редактировать
+                </button>
+                <button nz-button nzType="link" [routerLink]="['/user', user.id]">
+                    <i nz-icon nzType="info-circle"></i>
+                    Подробнее
+                </button>
+                <button nz-button nzType="link" (click)="confirmDelete(user.id)" class="delete-btn">
+                    <i nz-icon nzType="delete" nzTheme="twotone" nzTwoToneColor="#ff4d4f"></i>
+                    Удалить
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>
+
+<div class="pagination-container">
+    <button nz-button nz-shape="round" nzType="default" (click)="onPreviousPage()">
+        <i nz-icon nzType="arrow-left"></i>
+        Назад
+    </button>
+    <span class="page-indicator">Страница {{ pageIndex }} из {{ totalPages }}</span>
+    <button nz-button nz-shape="round" nzType="default" (click)="onNextPage()">
+        Вперёд
+        <i nz-icon nzType="arrow-right"></i>
+    </button>
+</div>

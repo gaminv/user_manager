@@ -1,0 +1,78 @@
+.filters-container {
+    background-color: #fafafa;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: flex-end;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+
+    .filter-input,
+    .filter-select {
+        flex: 1 1 300px;
+        min-width: 250px;
+    }
+
+    .clear-icon {
+        cursor: pointer;
+        transition: color 0.2s;
+
+        &:hover {
+            color: #ff4d4f;
+        }
+    }
+}
+
+.user-table {
+    margin-bottom: 24px;
+
+    td,
+    th {
+        white-space: nowrap;
+    }
+
+    th.actions-column {
+        width: 200px;
+    }
+
+    .delete-btn {
+        color: #ff4d4f;
+
+        &:hover {
+            color: #cf1322;
+        }
+    }
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+
+    .page-indicator {
+        font-weight: 500;
+    }
+
+    button {
+        background-color: #fff;
+        color: rgba(0, 0, 0, 0.85);
+        border: 1px solid #d9d9d9;
+        transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+
+        &:hover {
+            background-color: #e6f7ff;
+            color: #1890ff;
+            box-shadow: 0 2px 8px rgba(24, 144, 255, 0.2);
+        }
+
+        &:active {
+            background-color: #bae7ff;
+            color: #0050b3;
+            box-shadow: none;
+        }
+    }
+}
